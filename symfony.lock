@@ -97,6 +97,12 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.13.1"
     },
+    "symfony/process": {
+        "version": "v3.4.37"
+    },
+    "symfony/profiler-pack": {
+        "version": "v1.0.4"
+    },
     "symfony/routing": {
         "version": "3.3",
         "recipe": {
@@ -110,7 +116,57 @@
             "config/routes.yaml"
         ]
     },
+    "symfony/stopwatch": {
+        "version": "v3.4.37"
+    },
+    "symfony/twig-bridge": {
+        "version": "v3.4.37"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "1da1987340b5ba64b16383906d678b989e3d096e"
+        },
+        "files": [
+            "config/packages/test/twig.yaml",
+            "config/packages/twig.yaml",
+            "config/routes/dev/twig.yaml",
+            "templates/base.html.twig"
+        ]
+    },
+    "symfony/var-dumper": {
+        "version": "v3.4.37"
+    },
+    "symfony/web-profiler-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
+        },
+        "files": [
+            "config/packages/dev/web_profiler.yaml",
+            "config/packages/test/web_profiler.yaml",
+            "config/routes/dev/web_profiler.yaml"
+        ]
+    },
+    "symfony/web-server-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
+        }
+    },
     "symfony/yaml": {
         "version": "v3.4.37"
+    },
+    "twig/twig": {
+        "version": "v2.12.3"
     }
 }
