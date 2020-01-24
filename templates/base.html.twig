@@ -12,8 +12,56 @@
         <link href="{{ asset('assets/css/_variables.scss') }}" rel="stylesheet"/>
 
     </head>
-    <body>
+    <body >
+    <nav class="navbar navbar-inverse" style="padding-left:5%; padding-right:5%;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="#">
+          <img src="{{ asset('assets/img/logo.png') }}" alt="" height="65" width="100" style="padding-bottom:25%;">
+        </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Plat du jour </a></li>
+        <li><a href="#">Qui sommes nous</a></li>
+        <li><a href="#">Gestion des menus</a></li>
+        <li><a href="#">Liste des commandes</a></li>
+        <li><a href="#">Liste des clients</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion des utilisateurs <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Connexion</a></li>
+            <li><a href="#">Inscription</a></li>
+            <li><a href="#">Déconnexion</a></li>
+            <li class="divider"></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+   <div class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts %}
+
+    </div>
+         <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        {% endblock %}
     </body>
 </html>
