@@ -4,6 +4,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/bootswatch.less') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/_bootswatch.scss') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/variables.less') }}" rel="stylesheet"/>
+        <link href="{{ asset('assets/css/_variables.scss') }}" rel="stylesheet"/>
+
     </head>
     <body>
         {% block body %}{% endblock %}
