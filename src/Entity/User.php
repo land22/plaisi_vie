@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,6 +23,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email( message = "l'adresse mail n'est pas valide")
      */
     private $email;
 
@@ -32,8 +35,13 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(min="6", minMessage="Votre mot de passe doit faire minimun 8 caractères")
      */
     private $password;
+   /**
+   ** @Assert\EqualTo(propertyPath="password", message="vous n'avez pas saisi le même mot de passe")
+   */
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255)

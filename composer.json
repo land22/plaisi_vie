@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.8",
+        "doctrine/doctrine-migrations-bundle": "^2.1",
         "doctrine/orm": "^2.7",
         "symfony/asset": "3.4.*",
         "symfony/cache": "3.4.*",
