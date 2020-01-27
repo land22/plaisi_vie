@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Commande;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
@@ -12,12 +13,12 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method Commande[]    findAll()
  * @method Commande[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CommandeRepository extends ServiceEntityRepository
+class CommandeRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+   /* public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Commande::class);
-    }
+    }*/
 
     // /**
     //  * @return Commande[] Returns an array of Commande objects
