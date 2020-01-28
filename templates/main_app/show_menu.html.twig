@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plaisir vie{% endblock %}
+
+{% block body %}
+{% for menu in menus %}
+<div class="panel panel-default col-sm-4">
+  <div class="panel-heading"><span class="label label-primary">Nom du plat : </span> {{ menu.nom }} <br> <span class="label label-success">Boisson: </span> {{ menu.boisson }} <br>
+  Nombre de point <span class="badge"> {{ menu.nbrpoint }}</span></a></li> </div>
+  <div class="panel-body">
+  <img src="{{ asset('images/' ~ menu.image) }}">
+  </div>
+ <a href="{{ path('commander_menu',{'id':menu.id})}}" class="btn btn-info">Commander ce menu</a>
+</div>
+{% endfor %}
+{% endblock %}

@@ -30,10 +30,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         {% if not app.user %}
-          <li><a href="#">Plat du jour </a></li>
+          <li><a href="{{ url('show_menu') }}">Plats du jour </a></li>
           <li><a href="#">Qui sommes nous</a></li>
         {% else %}
-          <li><a href="#">Plat du jour </a></li>
+          <li><a href="{{ url('show_menu') }}">Plats du jour </a></li>
           <li><a href="#">Qui sommes nous</a></li>
           <li><a href="{{ url('liste_menu') }}">Gestion des menus</a></li>
           <li><a href="#">Liste des commandes</a></li>
