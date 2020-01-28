@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plaisir vie{% endblock %}
+
+{% block body %}
+
+<h1>Vos commandes enregistrées !!!</h1>
+ <p class="active">Pour l'instant vous cumulez <span class="badge"> {{ sommes }} </span> points </p>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Boison</th>
+      <th>Image</th>
+      <th>Nombre de point</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for menu in menus %}
+    <tr>
+      <td>{{ menu.nom }}</td>
+      <td>{{ menu.boisson }}</td>
+      <td><img src="{{ asset('images/' ~ menu.image) }}"></td>
+      <td>
+<span class="label label-success">{{ menu.nbrpoint }}</span></td>
+     <td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+{% endblock %}

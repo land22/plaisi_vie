@@ -125,9 +125,65 @@ class MainAppController extends Controller
     $commande->setUsers($user);
                 $commande->setMenu($menu);
                 $commande->setDateCommande(new \DateTime());
+                $commande->setValide(0);
    		$manager = $this->getDoctrine()->getManager();
    		$manager->persist($commande);
    		$manager->flush();
         return $this->redirectToRoute('show_menu');
     }
+    /**
+     * @Route("/show_commande", name="show_commande")
+     */
+    public function show_commande()
+    {	
+     $repos_commande = $this->getDoctrine()->getRepository(Commande::class);
+    $commande = $repos_commande->findAll();
+    
+        return $this->render('main_app/show_commande.html.twig', [
+            'commandes' => $commande,
+        ]);
+    }
+
+    /**
+     * @Route("/save_commande/{id}", name="save_commande")
+     */
+    public function save_commande($id)
+    {
+    	$repository = $this->getDoctrine()
+    ->getRepository(Commande::class);
+    $commande = $repository->find($id);
+    if ($commande->getValide() == 0 OR is_null($commande->getValide()) ) {
+    	$commande->setValide(1);
+    }
+    else {
+    	$commande->setValide(0);
+    }
+    $manager = $this->getDoctrine()->getManager();
+   		$manager->flush();
+    	$repos_commande = $repository->findAll();
+        return $this->redirectToRoute('show_commande');
+    }
+    /**
+     * @Route("/commande_user", name="commande_user")
+     */
+    public function commande_user()
+    {	
+     $repos_commande = $this->getDoctrine()->getRepository(Commande::class);
+     $user = $this->getUser();
+   $manager = $this->getDoctrine()->getManager();
+
+$query = $manager->createQuery('SELECT m FROM App\Entity\User u , App\Entity\Commande c , App\Entity\Menu m WHERE c.valide = 1 AND c.menu = m.id AND c.users = '.$user->getId().' ');
+
+$menu = $query->getResult();
+$sum = 0;
+foreach ($menu as $value) {
+	$sum = $sum + $value->getNbrpoint();
+}
+    
+        return $this->render('main_app/commande_user.html.twig', [
+            'menus' => $menu,
+            'sommes'=>$sum
+        ]);
+    }
+
 }

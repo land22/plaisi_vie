@@ -31,6 +31,11 @@ class Commande
      */
     private $menu;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $valide;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Commande
     public function setMenu(?Menu $menu): self
     {
         $this->menu = $menu;
+
+        return $this;
+    }
+
+    public function getValide(): ?int
+    {
+        return $this->valide;
+    }
+
+    public function setValide(int $valide): self
+    {
+        $this->valide = $valide;
 
         return $this;
     }
