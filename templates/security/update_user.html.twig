@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}plaisir vie{% endblock %}
+
+{% block body %}
+ <h1>Inscription sur notre application</h1>
+ {{ form_start(form)}}
+  <fieldset>
+ <div class="form-group">
+ {{ form_row(form.nom, {'label':'Nom','attr':{ 'placeholder':'nom ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.prenom, {'label':'Prénom','attr':{ 'placeholder':'prénom ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.telephone, {'label':'Téléphone','attr':{ 'placeholder':'Numero de téléphone ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.adresse, {'label':'Adresse','attr':{ 'placeholder':'adresse ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.email, {'label':'Email','attr':{ 'placeholder':'adresse mail ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.roles|join(', '), {'label':'Role','attr':{ 'placeholder':'adresse mail ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.password, {'label':'Mot de passe','attr':{ 'placeholder':'mot de passe ...','class':'form-control'} })}}
+</div>
+<div class="form-group">
+ {{ form_row(form.confirm_password, {'label':'Confirmé votre mot de passe','attr':{ 'placeholder':'Confirmé le mot de passse ...','class':'form-control'} })}}
+</div>
+ <button type="submit" class="btn btn-success">Modifier</button> <br> <br>
+  </fieldset>
+ {{ form_end(form)}}
+
+{% endblock %}

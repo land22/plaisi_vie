@@ -27,11 +27,7 @@
       {% else %}
         <a class="label label-primary" href="{{ path('save_menu',{'id':menu.id})}}">Masquer</a>
       {% endif %}
-
-<span class="label label-success">Success</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
-<span class="label label-info">Info</span></td>
+<a class="label label-danger" href="{{ path('drop_menu',{'id':menu.id})}}">Supprimer</a>
     </tr>
     {% endfor %}
   </tbody>

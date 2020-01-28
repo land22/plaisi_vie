@@ -113,6 +113,21 @@ class MainAppController extends Controller
     	$repos_menu = $repository->findAll();
         return $this->redirectToRoute('liste_menu');
     }
+      /**
+     * @Route("/drop_menu/{id}", name="drop_menu")
+     */
+    public function drop_menu($id)
+    {
+    	$repository = $this->getDoctrine()
+    ->getRepository(Menu::class);
+    $menu = $repository->find($id);
+    $manager = $this->getDoctrine()->getManager();
+    $manager->remove($menu);
+   		$manager->flush();
+    	$repos_menu = $repository->findAll();
+        return $this->redirectToRoute('liste_menu');
+    }
+
     /**
      * @Route("/commander_menu/{id}", name="commander_menu")
      */

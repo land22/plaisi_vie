@@ -42,6 +42,35 @@ class SecurityController extends Controller
    public function login (){
    	return $this->render('security/login.html.twig');
    }
+
+   /**
+   *@Route("/user_list", name="user_list")
+   */
+   public function user_list (){
+      $repository = $this->getDoctrine()
+    ->getRepository(User::class);
+      $user = $repository->findAll();
+      return $this->render('security/user_list.html.twig',
+  ['users'=>$user]
+   );
+   } 
+   /**
+   *@Route("/update_user/{id}", name="update_user")
+   */
+   public function update_user ($id, Request $request){
+      $repository = $this->getDoctrine()
+    ->getRepository(User::class);
+      $user = $repository->find($id);
+       $data = array();
+       $data[] = $request->request->get('roles');
+      
+    $manager = $this->getDoctrine()->getManager();
+      $user->setRoles($data);
+      $manager->flush();
+         return $this->redirectToRoute('user_list');
+   } 
+
+
    /**
 	*@Route("/deconnexion", name="security_logout")
 	*/
