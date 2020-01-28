@@ -6,6 +6,7 @@ use App\Entity\Menu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Menu|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,7 +16,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class MenuRepository extends EntityRepository
 {
-   /* public function __construct(ManagerRegistry $registry)
+    /*public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Menu::class);
     }*/

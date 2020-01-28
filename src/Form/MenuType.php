@@ -6,6 +6,7 @@ use App\Entity\Menu;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MenuType extends AbstractType
 {
@@ -14,10 +15,8 @@ class MenuType extends AbstractType
         $builder
             ->add('nom')
             ->add('boisson')
-            ->add('image')
+            ->add('image', FileType::class)
             ->add('nbr_point')
-            ->add('valide')
-            ->add('date_pub')
         ;
     }
 
