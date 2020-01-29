@@ -30,11 +30,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         {% if not app.user %}
+          
+          <li><a href="{{ url('about') }}">Qui sommes nous</a></li>
           <li><a href="{{ url('show_menu') }}">Plats du jour </a></li>
-          <li><a href="#">Qui sommes nous</a></li>
         {% else %}
+
+          <li><a href="{{ url('about') }}">Qui sommes nous</a></li>
           <li><a href="{{ url('show_menu') }}">Plats du jour </a></li>
-          <li><a href="#">Qui sommes nous</a></li>
            <li><a href="{{ url('commande_user') }}">Vos commandes</a></li>
           <li><a href="{{ url('liste_menu') }}">Gestion des menus</a></li>
           <li><a href="{{ url('show_commande') }}">Liste des commandes</a></li>
@@ -43,7 +45,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion des utilisateurs <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilisateurs <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             {% if not app.user %}
               <li><a href="{{ url('security_login') }}">Connexion</a></li>

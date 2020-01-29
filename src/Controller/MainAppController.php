@@ -21,9 +21,14 @@ class MainAppController extends Controller
      */
     public function index()
     {
-        return $this->render('main_app/index.html.twig', [
-            'controller_name' => 'MainAppController',
-        ]);
+        return $this->render('main_app/index.html.twig');
+    }
+    /**
+     * @Route("/about", name="about")
+     */
+    public function about()
+    {
+        return $this->render('main_app/about.html.twig');
     }
     /**
      * @Route("/create_menu", name="create_menu")
@@ -133,18 +138,28 @@ class MainAppController extends Controller
      */
     public function commander_menu($id)
     {
-     $commande = new Commande();	
-     $repos_Menu = $this->getDoctrine()->getRepository(Menu::class);
-    $menu = $repos_Menu->find($id);
-    $user = $this->getUser();
-    $commande->setUsers($user);
-                $commande->setMenu($menu);
-                $commande->setDateCommande(new \DateTime());
-                $commande->setValide(0);
-   		$manager = $this->getDoctrine()->getManager();
-   		$manager->persist($commande);
-   		$manager->flush();
-        return $this->redirectToRoute('show_menu');
+        $user = $this->getUser();
+
+        if (null === $user) {
+            $this->addFlash('fail', 'Pour commander un menu il faut etre connecter (voir l\'onglet utilisateur)');
+          return $this->redirectToRoute('show_menu');
+        } 
+        else {
+            $this->addFlash('success', 'Merci pour votre commande!');
+              $commande = new Commande();   
+         $repos_Menu = $this->getDoctrine()->getRepository(Menu::class);
+        $menu = $repos_Menu->find($id);
+        $user = $this->getUser();
+        $commande->setUsers($user);
+                    $commande->setMenu($menu);
+                    $commande->setDateCommande(new \DateTime());
+                    $commande->setValide(0);
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($commande);
+            $manager->flush();
+            return $this->redirectToRoute('show_menu');
+        }
+     
     }
     /**
      * @Route("/show_commande", name="show_commande")

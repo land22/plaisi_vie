@@ -23,6 +23,7 @@ class SecurityController extends Controller
    	$form = $this->createForm(UserType::class, $user);
    	$form->handleRequest($request);
    	if($form->isSubmitted() and $form->isValid() ) {
+         $this->addFlash('success_registration', 'Vous faite parti de liste de no clients vous pouvez déjà vous connectez pour commander!');
    		$manager = $this->getDoctrine()->getManager();
    		$hash = $encoder->encodePassword($user, $user->getPassword());
    		$user->setPassword($hash);

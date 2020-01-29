@@ -5,13 +5,16 @@
 {% block body %}
 
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="jumbotron">
+  <h1>Plaisir Vie</h1>
+  <p>Bienvenue sur notre application pour notre restaurant PLAISIR VIE.</p>
+  <p>Le restaurant PLAISIR VIE est basé dans la ville de Douala au quartier Bonapriso</p>
+  <p>Contact: Email: info@plaisir_vie.com Téléphone:674 35 09 99 </p>
+  {% if not app.user %}
+  <p> Pour commander merci de vous <a href="{{ url('security_registration') }}" class="btn btn-primary btn-lg">Inscrire</a> OU vous <a href="{{ url('security_login') }}" class="btn btn-primary btn-lg">Connecter</a> Si vous avez déjà un compte</p>
+  {% else %}
+<p> Vous pouvez déjà commander en allant sur la page <a href="{{ url('show_menu') }}" class="btn btn-primary btn-lg">Plat du jour</a></p>
+  {% endif %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/plaisi_vie/src/Controller/MainAppController.php'|file_link(0) }}">src/Controller/MainAppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/plaisi_vie/templates/main_app/index.html.twig'|file_link(0) }}">templates/main_app/index.html.twig</a></code></li>
-    </ul>
 </div>
 {% endblock %}

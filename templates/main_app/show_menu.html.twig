@@ -3,6 +3,16 @@
 {% block title %}Plaisir vie{% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+         {% for message in app.flashes('fail') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %}
 {% for menu in menus %}
 <div class="panel panel-default col-sm-4">
   <div class="panel-heading"><span class="label label-primary">Nom du plat : </span> {{ menu.nom }} <br> <span class="label label-success">Boisson: </span> {{ menu.boisson }} <br>

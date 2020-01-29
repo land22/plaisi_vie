@@ -4,6 +4,11 @@
 
 {% block body %}
  <h1>Inscription sur notre application</h1>
+ {% for message in app.flashes('success_registration') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
  {{ form_start(form)}}
   <fieldset>
  <div class="form-group">
