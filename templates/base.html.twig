@@ -38,9 +38,16 @@
           <li><a href="{{ url('about') }}">Qui sommes nous</a></li>
           <li><a href="{{ url('show_menu') }}">Plats du jour </a></li>
            <li><a href="{{ url('commande_user') }}">Vos commandes</a></li>
-          <li><a href="{{ url('liste_menu') }}">Gestion des menus</a></li>
-          <li><a href="{{ url('show_commande') }}">Liste des commandes</a></li>
-          <li><a href="{{ url('user_list') }}">Liste des clients</a></li>
+           
+          {% if is_granted('ROLE_CAISSIERE') %}
+            <li><a href="{{ url('liste_menu') }}">Gestion des menus</a></li>
+            <li><a href="{{ url('show_commande') }}">Liste des commandes</a></li>
+          {% endif %}
+
+          {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ url('user_list') }}">Liste des clients</a></li>
+          {% endif %}
+
         {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -66,6 +73,7 @@
         {% block javascripts %}
 
     </div>
+    <nav class="navbar navbar-default">© 2020 Landry dev !</nav>
          <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

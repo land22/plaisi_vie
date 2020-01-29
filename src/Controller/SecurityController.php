@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 use App\Entity\User;
 use App\Form\UserType;
@@ -46,6 +48,7 @@ class SecurityController extends Controller
 
    /**
    *@Route("/user_list", name="user_list")
+   * @Security("is_granted('ROLE_ADMIN')")
    */
    public function user_list (){
       $repository = $this->getDoctrine()
@@ -57,6 +60,7 @@ class SecurityController extends Controller
    } 
    /**
    *@Route("/update_user/{id}", name="update_user")
+   * @Security("is_granted('ROLE_ADMIN')")
    */
    public function update_user ($id, Request $request){
       $repository = $this->getDoctrine()

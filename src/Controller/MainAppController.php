@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Repository\MenuRepository;
 use App\Entity\Menu;
 use App\Entity\Commande;
@@ -32,6 +33,7 @@ class MainAppController extends Controller
     }
     /**
      * @Route("/create_menu", name="create_menu")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function create_menu(Request $request)
     { 
@@ -76,6 +78,7 @@ class MainAppController extends Controller
     }
     /**
      * @Route("/liste_menu", name="liste_menu")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function liste_menu()
     {
@@ -101,6 +104,7 @@ class MainAppController extends Controller
 
     /**
      * @Route("/save_menu/{id}", name="save_menu")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function save_menu($id)
     {
@@ -120,6 +124,7 @@ class MainAppController extends Controller
     }
       /**
      * @Route("/drop_menu/{id}", name="drop_menu")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function drop_menu($id)
     {
@@ -145,7 +150,7 @@ class MainAppController extends Controller
           return $this->redirectToRoute('show_menu');
         } 
         else {
-            $this->addFlash('success', 'Merci pour votre commande!');
+            $this->addFlash('success', 'Merci pour votre commande, votre commande doit être enregister par notre caissière!');
               $commande = new Commande();   
          $repos_Menu = $this->getDoctrine()->getRepository(Menu::class);
         $menu = $repos_Menu->find($id);
@@ -163,6 +168,7 @@ class MainAppController extends Controller
     }
     /**
      * @Route("/show_commande", name="show_commande")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function show_commande()
     {	
@@ -176,6 +182,7 @@ class MainAppController extends Controller
 
     /**
      * @Route("/save_commande/{id}", name="save_commande")
+     * @Security("has_role('ROLE_CAISSIERE')")
      */
     public function save_commande($id)
     {
@@ -195,6 +202,7 @@ class MainAppController extends Controller
     }
     /**
      * @Route("/commande_user", name="commande_user")
+     * @Security("has_role('ROLE_USER')")
      */
     public function commande_user()
     {	
